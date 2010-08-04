@@ -21,7 +21,7 @@ INSTALLATION
       
 4. Optional: Set the logo path preference to include your store / company logo (in your seeds.rb / site extension).
 
-      Spree::PrintInvoice::Config.set(:print_invoice_logo_path => "/path/to/public/images/company-logo.png")
+      Spree::PrintInvoice::Config.set(:print_invoice_logo_path => "#{RAILS_ROOT}/public/images/company-logo.png")
 
 5. Enjoy!
 
