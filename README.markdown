@@ -23,5 +23,7 @@ INSTALLATION
 
       Spree::PrintInvoice::Config.set(:print_invoice_logo_path => "#{RAILS_ROOT}/public/images/company-logo.png")
 
+      Note: The logo is automatically resized. A 600x280 image will print at roughly 300dpi on A4/Letter. Larger images give nicer outputs, but at the expense of a slower rendering.
+
 5. Enjoy!
 

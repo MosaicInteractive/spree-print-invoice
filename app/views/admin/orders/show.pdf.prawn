@@ -5,7 +5,7 @@ ship_address = @order.ship_address
 
 font "Helvetica"
 
-image Spree::PrintInvoice::Config[:print_invoice_logo_path], :at => [0,720], :scale => 0.65
+image Spree::PrintInvoice::Config[:print_invoice_logo_path], :at => [0,720], :fit => [150, 70]
 
 fill_color "005D99"
 text "Customer Invoice", :align => :center, :style => :bold, :size => 22
