@@ -3,7 +3,9 @@ require 'prawn/layout'
 bill_address = @order.bill_address
 ship_address = @order.ship_address
 
-font "Helvetica"
+font_family = Spree::PrintInvoice::Config[:print_invoice_font_family]
+
+font font_family
 
 image Spree::PrintInvoice::Config[:print_invoice_logo_path], :at => [0,720], :fit => [150, 70]
 
@@ -13,10 +15,10 @@ fill_color "000000"
 
 move_down 55
 
-font "Helvetica", :style => :bold, :size => 14
+font font_family, :style => :bold, :size => 14
 text "Order Number: #{@order.number}"
 
-font "Helvetica", :size => 8
+font font_family, :size => 8
 text @order.created_at.to_s(:long)
 
 # Address Stuff
@@ -50,7 +52,7 @@ bounding_box [0,600], :width => 540 do
     table data2,
       :position           => :center,
       :border_width => 0.0,
-      :vertical_padding   => 0,
+      :vertical_padding   => 2,
       :horizontal_padding => 6,
       :font_size => 9,
       :column_widths => { 0 => 270, 1 => 270 }
@@ -71,7 +73,7 @@ end
 move_down 30
 
 # Line Items
-bounding_box [0,cursor], :width => 540, :height => 450 do
+bounding_box [0,cursor], :width => 540, :height => cursor - 34 do
   move_down 2
   data =  [[Prawn::Table::Cell.new( :text => "SKU", :font_style => :bold),
                 Prawn::Table::Cell.new( :text =>"Item Description", :font_style => :bold ),
@@ -114,7 +116,7 @@ bounding_box [0,cursor], :width => 540, :height => 450 do
       :align => { 0 => :left, 1 => :left, 2 => :right, 3 => :right, 4 => :right }
   end
 
-  font "Helvetica", :size => 9
+  font font_family, :size => 9
 
   totals = []
 
