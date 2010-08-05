@@ -1,0 +1,11 @@
+jp:
+  line_total: 金額
+  unit_price: 単価
+  print_invoice:
+    customer_invoice: 請求書
+    order_number: 注文番号
+    print_invoice: 請求書印刷
+    footer_message: |
+      送料は返金できません。 特注商品は返品できません。
+      返品には、返品許可番号付きの承認が必要です。
+      返品可能のは未開封の商品のみです。
