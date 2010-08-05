@@ -39,26 +39,17 @@ bounding_box [0,600], :width => 540 do
   move_down 2
   horizontal_rule
 
-  bounding_box [0,0], :width => 540 do
-    move_down 2
-    data2 = [["#{bill_address.firstname} #{bill_address.lastname}", "#{ship_address.firstname} #{ship_address.lastname}"],
-            [bill_address.address1, ship_address.address1]]
-    data2 << [bill_address.address2, ship_address.address2] unless bill_address.address2.blank? and ship_address.address2.blank?
-    data2 << ["#{@order.bill_address.city}, #{(@order.bill_address.state ? @order.bill_address.state.abbr : "")} #{@order.bill_address.zipcode}",
-              "#{@order.ship_address.city}, #{(@order.ship_address.state ? @order.ship_address.state.abbr : "")} #{@order.ship_address.zipcode}"]
-    data2 << [bill_address.country.name, ship_address.country.name]
-    data2 << [bill_address.phone, ship_address.phone]
+  move_down 2
 
-    table data2,
-      :position           => :center,
-      :border_width => 0.0,
-      :vertical_padding   => 2,
-      :horizontal_padding => 6,
-      :font_size => 9,
-      :column_widths => { 0 => 270, 1 => 270 }
+  left_box = bounding_box [6, 0], :width => 258 do
+    render :partial=>'/admin/orders/address', :locals => {:address => bill_address}
+    move_down 2
   end
 
-  move_down 2
+  bounding_box [276, left_box.height], :width => 258 do
+    render :partial=>'/admin/orders/address', :locals => {:address => ship_address}
+    move_down 2
+  end
 
   stroke do
     line_width 0.5
