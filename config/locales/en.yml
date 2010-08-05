@@ -1,0 +1,11 @@
+en:
+  # line_total: Line Total  # defaults to 'total' if not defined
+  # unit_price: Unit Price  # defauls to 'price' if not defined
+  print_invoice:
+    customer_invoice: Customer Invoice
+    order_number: Order Number
+    print_invoice: Print Invoice
+    footer_message: |
+      Shipping is not refundable. Special orders are not refundable.
+      In order to return a product, prior authorization with a RMA number is mandatory.
+      All returned items must be in original, unopened packaging with seal intact.
