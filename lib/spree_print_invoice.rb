@@ -10,11 +10,13 @@ module PrintInvoice
 
       Admin::OrdersController.class_eval do
         
-        show.success.wants.pdf do
-          template = params[:template] || "invoice"
-          render :template => "admin/orders/#{template}"  , :filename => "#{@order.number}.pdf", 
+        respond_override :show => {
+          :pdf => { :success => lambda {
+            template = params[:template] || "invoice"
+            render :template => "admin/orders/#{template}"  , :filename => "#{@order.number}.pdf", 
                   :layout => false      , :content_type => "application/pdf" , :type => :erb
-        end #
+          }}
+        }
         
         def method_missing(method, *args, &block)
           puts "missing #{method} has pdf=#{@pdf=!nil} args=#{args.length}"
