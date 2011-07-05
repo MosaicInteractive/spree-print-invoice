@@ -1,6 +1,6 @@
 require 'print_invoice_hooks'
-require 'prawn'
-require 'prawn/layout'
+require 'prawn_handler'
+#require 'prawn/layout'
 
 
 module PrintInvoice
