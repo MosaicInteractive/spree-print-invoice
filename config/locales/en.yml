@@ -27,3 +27,8 @@ en:
     print: Reminder
     thanks: Our system has not registered any payment for this Invoice. We kindly request you 
             correct this situation at once.
+  note: This is not an original invoice (DO NOT SEND THIS TO CUSTOMER)
+  invoice_print: Print Invoice
+  packaging_slip_print: Print Slip
+  packaging_slip: Packaging Slip
+  
