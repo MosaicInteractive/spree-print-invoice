@@ -9,20 +9,17 @@ end
 # Line Items
 bounding_box [0,cursor], :width => 540, :height => 430 do
   move_down 2
-  header =  [Prawn::Table::Cell.new( :text => t(:sku), :font_style => :bold),
-                Prawn::Table::Cell.new( :text => t(:item_description), :font_style => :bold ) ]
-  header <<  Prawn::Table::Cell.new( :text => t(:price), :font_style => :bold ) unless @hide_prices
-  header <<  Prawn::Table::Cell.new( :text => t(:qty), :font_style => :bold, :align => 1 )
-  header <<  Prawn::Table::Cell.new( :text => t(:total), :font_style => :bold ) unless @hide_prices
+  header =  [make_cell( :content => t(:sku), :font_style => :bold),
+                make_cell( :content => t(:item_description), :font_style => :bold ) ]
+  header <<  make_cell( :content => t(:price), :font_style => :bold ) unless @hide_prices
+  header <<  make_cell( :content => t(:qty), :font_style => :bold, :align => 1 )
+  header <<  make_cell( :content => t(:total), :font_style => :bold ) unless @hide_prices
     
   table [header],
-    :position           => :center,
-    :border_width => 1,
-    :vertical_padding   => 2,
-    :horizontal_padding => 6,
-    :font_size => 9,
-    :column_widths => @column_widths ,
-    :align => @align
+    :cell_style => {:align => :left,:border_width => 0.0 , :font_style => :bold , :padding => [2  , 5]} ,
+    :column_widths => @column_widths do
+      columns(2..-1).align = :right
+    end
 
   move_down 4
 
@@ -39,13 +36,10 @@ bounding_box [0,cursor], :width => 540, :height => 430 do
 
 
     table content,
-      :position           => :center,
-      :border_width => 0.5,
-      :vertical_padding   => 5,
-      :horizontal_padding => 6,
-      :font_size => 9,
-      :column_widths => @column_widths ,
-      :align => @align
+      :cell_style => {:align => :left,:border_width => 0.0,:size => 9 , :padding => [2  , 5]} ,
+      :column_widths => @column_widths do
+        columns(2..-1).align = :right
+      end
   end
 
   font "Helvetica", :size => 9

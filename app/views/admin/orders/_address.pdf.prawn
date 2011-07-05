@@ -8,16 +8,10 @@ anonymous = @order.email =~ /@example.net$/
 
 bounding_box [0,600], :width => 540 do
   move_down 2
-  data = [[Prawn::Table::Cell.new( :text => I18n.t(:billing_address), :font_style => :bold ),
-                Prawn::Table::Cell.new( :text =>I18n.t(:shipping_address), :font_style => :bold )]]
+  data = [[I18n.t(:billing_address), I18n.t(:shipping_address)]]
 
   table data,
-    :position           => :center,
-    :border_width => 0.5,
-    :vertical_padding   => 2,
-    :horizontal_padding => 6,
-    :font_size => 9,
-    :border_style => :underline_header,
+    :cell_style => {:align => :left,:border_width => 0.0,:size => 9 , :font_style => :bold},
     :column_widths => { 0 => 270, 1 => 270 }
 
   move_down 2
@@ -40,11 +34,7 @@ bounding_box [0,600], :width => 540 do
     end
     
     table data2,
-      :position           => :center,
-      :border_width => 0.0,
-      :vertical_padding   => 0,
-      :horizontal_padding => 6,
-      :font_size => 9,
+      :cell_style => {:align => :left,:border_width => 0.0,:size => 9 , :padding => [2 ,  5]},
       :column_widths => { 0 => 270, 1 => 270 }
   end
 
